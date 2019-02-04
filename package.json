@@ -1,0 +1,13 @@
+{
+  "name": "choco-in",
+  "version": "1.0.0",
+  "description": "Cryptocurruncy clone",
+  "main": "src/server.js",
+  "repository": "https://github.com/PurdueCho/choco-in.git",
+  "author": "Younghyun Cho <cho242@purdue.edu>",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "crypto-js": "^3.1.9-1"
+  }
+}
