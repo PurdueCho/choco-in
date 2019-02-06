@@ -27,6 +27,7 @@ const createHash = (index, previousHash, timestamp, data) =>
         index + previousHash + timestamp + JSON.stringify(data)
     ).toString();
 const getBlockHash = (block) => createHash(block.index, block.previousHash, block.timestamp, block.data);
+const getBlockchain = () => blockchain;
 
 /* Create new block */
 const createNewBlock = data => {
@@ -93,9 +94,22 @@ const isChainValid = (candidateChain) => {
     return true;
 }
 /* replacing chain to longer chain */
-const replaceChain = newChain => {
-    if (isChainValid(newChain) && newChain.length > blockchain.length) {
-        blockchain = newChain;
+const replaceChain = candidateChain => {
+    if (isChainValid(candidateChain) && candidateChain.length > getBlockchain().length) {
+        blockchain = candidateChain;
+        return true;
+    } else {
+        return false;
+    }
+}
+
+/* add Block to the chain */
+const addBlockToChain = candidateBlock => {
+    if(isNewBlockValid(candidateBlock, getLastBlock())) {
+        getBlockchain().push(candidateBlock);
+        return true;
+    } else {
+        return false;
     }
 }
 console.log(blockchain);
