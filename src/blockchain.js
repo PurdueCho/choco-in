@@ -47,6 +47,7 @@ const createNewBlock = data => {
         newTimestamp,
         data
     );
+    addBlockToChain(newBlock);
     return newBlock;
 }
 /* Block validation check */
@@ -113,3 +114,8 @@ const addBlockToChain = candidateBlock => {
     }
 }
 console.log(blockchain);
+
+module.exports = {
+    getBlockchain,
+    createNewBlock
+};
